@@ -3,11 +3,8 @@ package org.example.echo.domain.Broadcast.service;
 import lombok.RequiredArgsConstructor;
 import org.example.echo.domain.Broadcast.entity.Broadcast;
 import org.example.echo.domain.Broadcast.entity.repository.BroadcastRepository;
-import org.example.echo.domain.Broadcast.exception.BroadcastLengthOverException;
 import org.example.echo.domain.Broadcast.exception.EmptyMessageException;
-import org.example.echo.domain.Broadcast.exception.InvalidApiKeyException;
 import org.example.echo.domain.Broadcast.presentation.dto.request.PostBroadcastRequestDTO;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,12 +14,9 @@ public class AddBroadcastService {
 
     private final BroadcastRepository repo;
 
-    @Value("${API_KEY}")
-    private String API_KEY;
 
     @Transactional
     public void addBroadcast(PostBroadcastRequestDTO data){
-        if(API_KEY != data.API_KEY()) throw new InvalidApiKeyException();
         if(data.originalMessage() == null
                 || data.correctionMessage() == null)
             throw new EmptyMessageException();

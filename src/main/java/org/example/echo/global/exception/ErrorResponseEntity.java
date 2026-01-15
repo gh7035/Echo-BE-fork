@@ -1,8 +1,6 @@
-package org.example.echo.global.persistent;
+package org.example.echo.global.exception;
 
 import lombok.Data;
-import org.example.echo.global.exception.ErrorCode;
-import org.springframework.stereotype.Component;
 
 @Data
 public class ErrorResponseEntity {
