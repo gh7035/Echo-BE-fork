@@ -20,13 +20,12 @@ public class BroadcastController {
     public ResponseEntity<?> add(@RequestBody PostBroadcastRequestDTO data) {
         addBoardService.addBroadcast(data);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body("add BroadCast successfully");
+                .body("add Broadcast successfully");
     }
 
     @GetMapping("/broadcast")
-    public ResponseEntity<?> getBroadCast(@RequestParam(name="page", defaultValue = "0") int page,
-                                          @RequestHeader("API_KEY") String apiKey) {
+    public ResponseEntity<?> broadcast(@RequestParam(name="page", defaultValue = "0") int page) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(getBoardService.getBroadcast(page, apiKey));
+                .body(getBoardService.getBroadcast(page));
     }
 }
